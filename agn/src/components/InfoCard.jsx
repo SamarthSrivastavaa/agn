@@ -12,7 +12,6 @@ const InfoCard = ({
   avatar = null,
 }) => (
   <div className="bg-white rounded-2xl shadow-2xl w-full h-full p-10 flex flex-col gap-6 border-4 border-yellow-400">
-    {/* Header */}
     <div className="flex items-center gap-6">
       {avatar ? (
         <img src={avatar} alt={name} className="w-20 h-20 rounded-full border-4 border-yellow-400 object-cover" />
@@ -24,10 +23,9 @@ const InfoCard = ({
         <span className="text-lg text-gray-700">{name}</span>
       </div>
       <div className="ml-auto flex items-center gap-2">
-        <span className="bg-yellow-400 text-black px-4 py-1 rounded-full font-semibold text-sm">Preview</span>
+        <span className="bg-yellow-400 text-black px-4 py-1 rounded-full font-semibold text-sm"></span>
       </div>
-    </div>
-    {/* Info grid */}
+    </div>      
     <div className="grid grid-cols-2 gap-x-8 gap-y-4 mt-2">
       <div>
         <div className="text-gray-500 text-base font-semibold">Email Address</div>
