@@ -1,107 +1,163 @@
-import React, { useState } from "react";
-
-const glassyCardClass =
-  "rounded-3xl border border-white/20 shadow-2xl bg-black/70 backdrop-blur-md focus:outline-none p-14 sm:p-16 md:p-20 transition-none";
-const glassyInputClass =
-  "px-8 py-5 rounded-3xl border border-white/20 shadow-2xl bg-black/70 backdrop-blur-md text-white font-semibold text-2xl min-w-[120px] w-full focus:outline-none focus:ring-2 focus:ring-white/40 placeholder-white/40 transition";
-const glassyTextAreaClass =
-  "px-8 py-5 rounded-3xl border border-white/20 shadow-2xl bg-black/70 backdrop-blur-md text-white font-semibold text-2xl w-full focus:outline-none focus:ring-2 focus:ring-white/40 placeholder-white/40 transition resize-none min-h-[120px]";
-const glassyButtonClass =
-  "flex items-center px-8 py-5 rounded-3xl border border-white/20 shadow-2xl bg-black/70 backdrop-blur-md transition hover:bg-white/10 hover:border-white/40 min-w-[120px] justify-center text-2xl font-bold text-white mt-6 w-full";
-const boxShadowStyle = {
-  boxShadow:
-    "0 8px 48px 0 rgba(255,255,255,0.10), 0 2px 16px 0 rgba(255,255,255,0.13)",
-};
+import React, { useState } from 'react';
 
 const LaunchSupportForm = () => {
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    url: "",
-    support: "",
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    company: '',
+    productName: '',
+    launchDate: '',
+    supportType: '',
+    message: ''
   });
-  const [sent, setSent] = useState(false);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
-    setSent(false);
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSent(true);
-    // Here you would trigger your submission logic
+    console.log('Launch support form submitted:', formData);
   };
 
   return (
-    <div className={`w-full flex flex-col items-center justify-center ${glassyCardClass}`} style={{...boxShadowStyle, margin: '24px'}}>
-      <h2 className="text-white text-3xl font-extrabold mb-8 tracking-wide">Launch Support</h2>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-6 w-full max-w-2xl">
-        <div className="flex flex-col gap-2">
-          <label htmlFor="name" className="text-white/80 text-xl font-semibold">Name</label>
+    <div className="max-w-2xl mx-auto">
+      <div className="text-center mb-8">
+        <h2 className="text-3xl font-bold text-white mb-4">Launch Support</h2>
+        <p className="text-gray-400">Need help launching your product? We've got you covered.</p>
+      </div>
+
+      <form onSubmit={handleSubmit} className="space-y-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
+              Full Name *
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+              className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-300"
+              placeholder="Your full name"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
+              Email Address *
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+              className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-300"
+              placeholder="your@email.com"
+            />
+          </div>
+        </div>
+
+        <div>
+          <label htmlFor="company" className="block text-sm font-medium text-gray-300 mb-2">
+            Company
+          </label>
           <input
-            id="name"
-            name="name"
             type="text"
-            className={glassyInputClass}
-            style={boxShadowStyle}
-            placeholder="Your name"
-            value={form.name}
+            id="company"
+            name="company"
+            value={formData.company}
             onChange={handleChange}
-            required
+            className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-300"
+            placeholder="Your company name"
           />
         </div>
-        <div className="flex flex-col gap-2">
-          <label htmlFor="email" className="text-white/80 text-xl font-semibold">Email</label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            className={glassyInputClass}
-            style={boxShadowStyle}
-            placeholder="Your email"
-            value={form.email}
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label htmlFor="productName" className="block text-sm font-medium text-gray-300 mb-2">
+              Product Name *
+            </label>
+            <input
+              type="text"
+              id="productName"
+              name="productName"
+              value={formData.productName}
+              onChange={handleChange}
+              required
+              className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-300"
+              placeholder="Your product name"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="launchDate" className="block text-sm font-medium text-gray-300 mb-2">
+              Target Launch Date
+            </label>
+            <input
+              type="date"
+              id="launchDate"
+              name="launchDate"
+              value={formData.launchDate}
+              onChange={handleChange}
+              className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-300"
+            />
+          </div>
+        </div>
+
+        <div>
+          <label htmlFor="supportType" className="block text-sm font-medium text-gray-300 mb-2">
+            Support Type *
+          </label>
+          <select
+            id="supportType"
+            name="supportType"
+            value={formData.supportType}
             onChange={handleChange}
             required
-          />
+            className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-300"
+          >
+            <option value="">Select support type</option>
+            <option value="technical">Technical Support</option>
+            <option value="marketing">Marketing & Promotion</option>
+            <option value="strategy">Launch Strategy</option>
+            <option value="monitoring">Performance Monitoring</option>
+            <option value="full-service">Full Launch Service</option>
+          </select>
         </div>
-        <div className="flex flex-col gap-2">
-          <label htmlFor="url" className="text-white/80 text-xl font-semibold">Product URL</label>
-          <input
-            id="url"
-            name="url"
-            type="text"
-            className={glassyInputClass}
-            style={boxShadowStyle}
-            placeholder="https://yourproduct.com"
-            value={form.url}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="flex flex-col gap-2">
-          <label htmlFor="support" className="text-white/80 text-xl font-semibold">Support Needed</label>
+
+        <div>
+          <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
+            Launch Requirements *
+          </label>
           <textarea
-            id="support"
-            name="support"
-            className={glassyTextAreaClass}
-            style={boxShadowStyle}
-            placeholder="Describe the support you need..."
-            value={form.support}
+            id="message"
+            name="message"
+            value={formData.message}
             onChange={handleChange}
             required
+            rows={6}
+            className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-300 resize-none"
+            placeholder="Tell us about your launch goals, target audience, and specific support needs..."
           />
         </div>
-        <button type="submit" className={glassyButtonClass} style={boxShadowStyle}>
-          Submit
+
+        <button
+          type="submit"
+          className="w-full bg-gradient-to-r from-emerald-500 to-cyan-500 text-black font-bold py-4 px-8 rounded-xl hover:from-emerald-400 hover:to-cyan-400 transition-all duration-300 transform hover:scale-105 shadow-lg"
+        >
+          Request Launch Support
         </button>
-        {sent && (
-          <span className="text-green-400 text-lg mt-2 text-center">Thank you! We'll be in touch soon.</span>
-        )}
       </form>
     </div>
   );
 };
 
-export default LaunchSupportForm; 
+export default LaunchSupportForm;

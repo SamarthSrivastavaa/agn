@@ -1,85 +1,159 @@
-import React, { useState } from "react";
-import GeneralInquiryForm from "../components/GeneralInquiryForm";
-import ProjectConsultationForm from "../components/ProjectConsultationForm";
-import JoinOurTeamForm from "../components/JoinOurTeamForm";
-import LaunchSupportForm from "../components/LaunchSupportForm";
-
-const cardData = [
-  {
-    key: "general",
-    icon: "💬",
-    title: "General Inquiry",
-    desc: "We’re just a message away—let’s talk.",
-  },
-  {
-    key: "consultation",
-    icon: "📈",
-    title: "Project Consultation",
-    desc: "Get a free consultation with our dev experts.",
-  },
-  {
-    key: "join",
-    icon: "🧑‍💻",
-    title: "Join Our Team",
-    desc: "Collaborate with us on a project.",
-  },
-  {
-    key: "launch",
-    icon: "🚀",
-    title: "Launch Support",
-    desc: "We’ll back your product from MVP to market.",
-  },
-];
+import React, { useState } from 'react';
+import GeneralInquiryForm from '../components/GeneralInquiryForm';
+import JoinOurTeamForm from '../components/JoinOurTeamForm';
+import LaunchSupportForm from '../components/LaunchSupportForm';
+import ProjectConsultationForm from '../components/ProjectConsultationForm';
 
 const ReachOut = () => {
-  const [selected, setSelected] = useState(null);
+  const [selected, setSelected] = useState('general');
+
+  const cards = [
+    {
+      id: 'general',
+      title: 'General Inquiry',
+      description: 'Have a question? We\'d love to hear from you.',
+      icon: '💬',
+      color: 'from-blue-500 to-purple-500'
+    },
+    {
+      id: 'project',
+      title: 'Project Consultation',
+      description: 'Ready to start your next big project? Let\'s talk.',
+      icon: '🚀',
+      color: 'from-emerald-500 to-cyan-500'
+    },
+    {
+      id: 'launch',
+      title: 'Launch Support',
+      description: 'Need help launching your product? We\'ve got you covered.',
+      icon: '🎯',
+      color: 'from-orange-500 to-red-500'
+    },
+    {
+      id: 'join',
+      title: 'Join Our Team',
+      description: 'Want to work with us? We\'re always looking for talent.',
+      icon: '👥',
+      color: 'from-pink-500 to-rose-500'
+    }
+  ];
+
+  const renderForm = () => {
+    switch (selected) {
+      case 'general':
+        return <GeneralInquiryForm />;
+      case 'project':
+        return <ProjectConsultationForm />;
+      case 'launch':
+        return <LaunchSupportForm />;
+      case 'join':
+        return <JoinOurTeamForm />;
+      default:
+        return <GeneralInquiryForm />;
+    }
+  };
 
   return (
-    <div className="w-full px-6 flex-1 font-sans pb-3" style={{fontFamily: 'Inter, Space Grotesk, sans-serif'}}>
-      <div className="relative w-full min-h-[110vh] bg-black overflow-hidden flex flex-col">
-        <div className="flex flex-col justify-start items-start p-16 ml-10 mt-24">
-          <h1 className="text-white font-bold font-poppins text-[7rem] leading-none tracking-[0.165em]">Reach</h1>
-          <h1 className="text-white font-bold font-poppins text-[7rem] leading-none tracking-[0.165em]">Out</h1>
-          <div className="mt-4 w-64 h-3 bg-white rounded-full"></div>
+    <div id="contact" className="relative w-full min-h-screen bg-gradient-to-br from-slate-900 via-black to-slate-900 py-20">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,0.1) 1px, transparent 0)`,
+          backgroundSize: '30px 30px'
+        }}></div>
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header Section */}
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/10 border border-emerald-500/20 rounded-full mb-6">
+            <div className="w-2 h-2 bg-emerald-400 rounded-full"></div>
+            <span className="text-emerald-400 text-sm font-medium">GET IN TOUCH</span>
+          </div>
+          
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black text-white leading-tight mb-6">
+            Let's Build Something
+            <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent"> Amazing</span>
+          </h1>
+          
+          <div className="w-24 h-1 bg-gradient-to-r from-emerald-400 to-cyan-400 mx-auto mb-8"></div>
+          
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            Ready to transform your ideas into reality? Choose how you'd like to connect with us and let's start the conversation.
+          </p>
         </div>
-        <div className={`flex justify-center items-center w-full transition-all duration-500 ${selected ? 'opacity-100 translate-y-0 mt-0 mb-6' : 'opacity-0 -translate-y-10 h-0 m-0 pointer-events-none'}`}
-          style={{minHeight: selected ? '40vh' : 0}}>
-          {selected === "general" && (
-            <div className="w-[60%] h-[60%] flex items-center justify-center">
-              <GeneralInquiryForm />
+
+        {/* Contact Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          {cards.map((card) => (
+            <div
+              key={card.id}
+              onClick={() => setSelected(card.id)}
+              className={`relative cursor-pointer transition-all duration-300 transform hover:scale-105 ${
+                selected === card.id 
+                  ? 'bg-gradient-to-r from-white/20 to-white/10 border-emerald-400/50' 
+                  : 'bg-white/5 hover:bg-white/10 border-white/10'
+              } backdrop-blur-xl rounded-2xl border p-6 shadow-2xl`}
+            >
+              <div className="text-center">
+                <div className={`w-16 h-16 bg-gradient-to-r ${card.color} rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg`}>
+                  <span className="text-2xl">{card.icon}</span>
+                </div>
+                <h3 className="text-white font-bold text-lg mb-2">{card.title}</h3>
+                <p className="text-gray-400 text-sm leading-relaxed">{card.description}</p>
+              </div>
+              
+              {selected === card.id && (
+                <div className="absolute -top-2 -right-2 w-6 h-6 bg-emerald-400 rounded-full flex items-center justify-center">
+                  <svg className="w-4 h-4 text-black" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                </div>
+              )}
             </div>
-          )}
-          {selected === "consultation" && (
-            <div className="w-[60%] h-[60%] flex items-center justify-center">
-              <ProjectConsultationForm />
-            </div>
-          )}
-          {selected === "join" && (
-            <div className="w-[60%] h-[60%] flex items-center justify-center">
-              <JoinOurTeamForm />
-            </div>
-          )}
-          {selected === "launch" && (
-            <div className="w-[60%] h-[60%] flex items-center justify-center">
-              <LaunchSupportForm />
-            </div>
-          )}
+          ))}
         </div>
-        <div className={`w-full flex justify-center items-center transition-all duration-500 ${selected ? 'mt-0' : 'mt-20'} mb-10`}>
-          <div className={`${selected ? 'grid grid-cols-2 gap-6 w-[60%]' : 'grid grid-cols-1 sm:grid-cols-2 gap-12 w-full max-w-6xl'} px-4 transition-all duration-500`}>
-            {cardData.map((card) => (
-              <button
-                key={card.key}
-                onClick={() => setSelected(card.key)}
-                className={`relative ${selected ? 'rounded-2xl p-6 min-h-[110px] text-lg' : 'rounded-3xl p-12 min-h-[260px] text-2xl'} border border-white/20 shadow-2xl bg-black/70 backdrop-blur-md flex flex-col transition-all duration-300 hover:scale-105 hover:backdrop-blur-xl hover:bg-white/10 hover:border-white/40 group focus:outline-none items-center justify-center`}
-                style={{boxShadow: '0 8px 48px 0 rgba(255,255,255,0.10), 0 2px 16px 0 rgba(255,255,255,0.13)', width: selected ? '100%' : undefined, maxWidth: selected ? 'none' : undefined}}
-                tabIndex={0}
-              >
-                <span className={`select-none ${selected ? 'text-2xl mb-1' : 'text-5xl absolute top-8 left-8'}`}>{card.icon}</span>
-                <h3 className={`font-bold text-white ${selected ? 'text-lg mt-2 mb-1' : 'text-4xl mt-16 mb-4'} font-sans`} style={{fontFamily: 'Inter, sans-serif'}}>{card.title}</h3>
-                <p className={`text-white/70 ${selected ? 'text-xs' : 'text-xl'} font-sans text-center`} style={{fontFamily: 'Inter, sans-serif'}}>{card.desc}</p>
-              </button>
-            ))}
+
+        {/* Form Display */}
+        <div className="max-w-4xl mx-auto">
+          <div className="bg-gradient-to-r from-white/10 to-white/5 backdrop-blur-xl rounded-3xl border border-white/20 shadow-2xl overflow-hidden">
+            <div className="p-8">
+              {renderForm()}
+            </div>
+          </div>
+        </div>
+
+        {/* Contact Info */}
+        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="text-center p-6 bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10">
+            <div className="w-12 h-12 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-xl flex items-center justify-center mx-auto mb-4">
+              <svg className="w-6 h-6 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <h3 className="text-white font-bold text-lg mb-2">Email Us</h3>
+            <p className="text-gray-400">hello@techneon.com</p>
+          </div>
+
+          <div className="text-center p-6 bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10">
+            <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl flex items-center justify-center mx-auto mb-4">
+              <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+            </div>
+            <h3 className="text-white font-bold text-lg mb-2">Call Us</h3>
+            <p className="text-gray-400">+1 (555) 123-4567</p>
+          </div>
+
+          <div className="text-center p-6 bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10">
+            <div className="w-12 h-12 bg-gradient-to-r from-orange-500 to-red-500 rounded-xl flex items-center justify-center mx-auto mb-4">
+              <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+            </div>
+            <h3 className="text-white font-bold text-lg mb-2">Visit Us</h3>
+            <p className="text-gray-400">123 Tech Street, Digital City</p>
           </div>
         </div>
       </div>
@@ -87,4 +161,4 @@ const ReachOut = () => {
   );
 };
 
-export default ReachOut; 
+export default ReachOut;

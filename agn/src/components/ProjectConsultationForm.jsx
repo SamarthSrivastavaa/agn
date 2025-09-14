@@ -1,123 +1,173 @@
-import React, { useState } from "react";
-
-const glassyCardClass =
-  "rounded-3xl border border-white/20 shadow-2xl bg-black/70 backdrop-blur-md transition hover:bg-white/10 hover:border-white/40 group focus:outline-none";
-const glassyInputClass =
-  "px-8 py-5 rounded-3xl border border-white/20 shadow-2xl bg-black/70 backdrop-blur-md text-white font-semibold text-2xl min-w-[120px] w-full focus:outline-none focus:ring-2 focus:ring-white/40 placeholder-white/40 transition";
-const glassyTextAreaClass =
-  "px-8 py-5 rounded-3xl border border-white/20 shadow-2xl bg-black/70 backdrop-blur-md text-white font-semibold text-2xl w-full focus:outline-none focus:ring-2 focus:ring-white/40 placeholder-white/40 transition resize-none min-h-[120px]";
-const glassyButtonClass =
-  "flex items-center px-8 py-5 rounded-3xl border border-white/20 shadow-2xl bg-black/70 backdrop-blur-md transition hover:bg-white/10 hover:border-white/40 min-w-[120px] justify-center text-2xl font-bold text-white mt-6 w-full";
-const boxShadowStyle = {
-  boxShadow:
-    "0 8px 48px 0 rgba(255,255,255,0.10), 0 2px 16px 0 rgba(255,255,255,0.13)",
-};
+import React, { useState } from 'react';
 
 const ProjectConsultationForm = () => {
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    idea: "",
-    timeline: "",
-    budget: "",
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    company: '',
+    projectType: '',
+    budget: '',
+    timeline: '',
+    message: ''
   });
-  const [sent, setSent] = useState(false);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
-    setSent(false);
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSent(true);
+    console.log('Project consultation form submitted:', formData);
   };
 
   return (
-    <div className={`w-full flex flex-col items-center justify-center p-12 ${glassyCardClass}`} style={boxShadowStyle}>
-      <h2 className="text-white text-3xl font-extrabold mb-8 tracking-wide">Project Consultation</h2>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-6 w-full max-w-2xl">
-        <div className="flex flex-col gap-2">
-          <label htmlFor="name" className="text-white/80 text-xl font-semibold">Name</label>
-          <input
-            id="name"
-            name="name"
-            type="text"
-            className={glassyInputClass}
-            style={boxShadowStyle}
-            placeholder="Your name"
-            value={form.name}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="flex flex-col gap-2">
-          <label htmlFor="email" className="text-white/80 text-xl font-semibold">Email</label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            className={glassyInputClass}
-            style={boxShadowStyle}
-            placeholder="Your email"
-            value={form.email}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="flex flex-col gap-2">
-          <label htmlFor="idea" className="text-white/80 text-xl font-semibold">Idea Summary</label>
-          <textarea
-            id="idea"
-            name="idea"
-            className={glassyTextAreaClass}
-            style={boxShadowStyle}
-            placeholder="Describe your idea..."
-            value={form.idea}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="flex flex-row gap-6">
-          <div className="flex flex-col gap-2 w-1/2">
-            <label htmlFor="timeline" className="text-white/80 text-xl font-semibold">Timeline</label>
+    <div className="max-w-2xl mx-auto">
+      <div className="text-center mb-8">
+        <h2 className="text-3xl font-bold text-white mb-4">Project Consultation</h2>
+        <p className="text-gray-400">Ready to start your next big project? Let's talk.</p>
+      </div>
+
+      <form onSubmit={handleSubmit} className="space-y-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
+              Full Name *
+            </label>
             <input
-              id="timeline"
-              name="timeline"
               type="text"
-              className={glassyInputClass}
-              style={boxShadowStyle}
-              placeholder="e.g. 2 months"
-              value={form.timeline}
+              id="name"
+              name="name"
+              value={formData.name}
               onChange={handleChange}
               required
+              className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-300"
+              placeholder="Your full name"
             />
           </div>
-          <div className="flex flex-col gap-2 w-1/2">
-            <label htmlFor="budget" className="text-white/80 text-xl font-semibold">Budget</label>
+
+          <div>
+            <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
+              Email Address *
+            </label>
             <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+              className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-300"
+              placeholder="your@email.com"
+            />
+          </div>
+        </div>
+
+        <div>
+          <label htmlFor="company" className="block text-sm font-medium text-gray-300 mb-2">
+            Company
+          </label>
+          <input
+            type="text"
+            id="company"
+            name="company"
+            value={formData.company}
+            onChange={handleChange}
+            className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-300"
+            placeholder="Your company name"
+          />
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label htmlFor="projectType" className="block text-sm font-medium text-gray-300 mb-2">
+              Project Type *
+            </label>
+            <select
+              id="projectType"
+              name="projectType"
+              value={formData.projectType}
+              onChange={handleChange}
+              required
+              className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-300"
+            >
+              <option value="">Select project type</option>
+              <option value="web-app">Web Application</option>
+              <option value="mobile-app">Mobile Application</option>
+              <option value="e-commerce">E-commerce Platform</option>
+              <option value="api">API Development</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div>
+            <label htmlFor="budget" className="block text-sm font-medium text-gray-300 mb-2">
+              Budget Range
+            </label>
+            <select
               id="budget"
               name="budget"
-              type="text"
-              className={glassyInputClass}
-              style={boxShadowStyle}
-              placeholder="e.g. $5000"
-              value={form.budget}
+              value={formData.budget}
               onChange={handleChange}
-              required
-            />
+              className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-300"
+            >
+              <option value="">Select budget range</option>
+              <option value="under-10k">Under $10,000</option>
+              <option value="10k-25k">$10,000 - $25,000</option>
+              <option value="25k-50k">$25,000 - $50,000</option>
+              <option value="50k-100k">$50,000 - $100,000</option>
+              <option value="over-100k">Over $100,000</option>
+            </select>
           </div>
         </div>
-        <button type="submit" className={glassyButtonClass} style={boxShadowStyle}>
-          Submit
+
+        <div>
+          <label htmlFor="timeline" className="block text-sm font-medium text-gray-300 mb-2">
+            Timeline
+          </label>
+          <select
+            id="timeline"
+            name="timeline"
+            value={formData.timeline}
+            onChange={handleChange}
+            className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-300"
+          >
+            <option value="">Select timeline</option>
+            <option value="asap">ASAP</option>
+            <option value="1-month">1 Month</option>
+            <option value="2-3-months">2-3 Months</option>
+            <option value="3-6-months">3-6 Months</option>
+            <option value="6-months-plus">6+ Months</option>
+          </select>
+        </div>
+
+        <div>
+          <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
+            Project Details *
+          </label>
+          <textarea
+            id="message"
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            required
+            rows={6}
+            className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-300 resize-none"
+            placeholder="Tell us about your project requirements, goals, and any specific features you need..."
+          />
+        </div>
+
+        <button
+          type="submit"
+          className="w-full bg-gradient-to-r from-emerald-500 to-cyan-500 text-black font-bold py-4 px-8 rounded-xl hover:from-emerald-400 hover:to-cyan-400 transition-all duration-300 transform hover:scale-105 shadow-lg"
+        >
+          Request Consultation
         </button>
-        {sent && (
-          <span className="text-green-400 text-lg mt-2 text-center">Thank you! We'll be in touch soon.</span>
-        )}
       </form>
     </div>
   );
 };
 
-export default ProjectConsultationForm; 
+export default ProjectConsultationForm;

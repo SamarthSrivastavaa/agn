@@ -1,87 +1,108 @@
-import React, { useState } from "react";
-
-const XLogo = () => (
-  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="inline-block align-middle mr-2">
-    <rect width="24" height="24" rx="6" fill="#222"/>
-    <path d="M16.5 7.5L7.5 16.5M7.5 7.5L16.5 16.5" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-  </svg>
-);
-
-const glassyCardClass =
-  "rounded-3xl border border-white/20 shadow-2xl bg-black/70 backdrop-blur-md transition hover:bg-white/10 hover:border-white/40 group focus:outline-none";
-const glassyButtonClass =
-  "flex items-center px-8 py-5 rounded-3xl border border-white/20 shadow-2xl bg-black/70 backdrop-blur-md transition hover:bg-white/10 hover:border-white/40 min-w-[120px] justify-center text-2xl font-bold text-white";
-const glassyInputClass =
-  "px-8 py-5 rounded-3xl border border-white/20 shadow-2xl bg-black/70 backdrop-blur-md text-white font-semibold text-2xl min-w-[120px] w-full focus:outline-none focus:ring-2 focus:ring-white/40 placeholder-white/40 transition";
-const boxShadowStyle = {
-  boxShadow:
-    "0 8px 48px 0 rgba(255,255,255,0.10), 0 2px 16px 0 rgba(255,255,255,0.13)",
-};
+import React, { useState } from 'react';
 
 const GeneralInquiryForm = () => {
-  const [email, setEmail] = useState("");
-  const [sent, setSent] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    company: '',
+    message: ''
+  });
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-    setSent(false);
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
   };
 
-  const handleSend = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    if (!email.match(/^[^@\s]+@[^@\s]+\.[^@\s]+$/)) return;
-    setSent(true);
-    // Here you would trigger your email logic
+    // Handle form submission
+    console.log('Form submitted:', formData);
   };
 
   return (
-    <div className="w-full flex flex-row gap-8 items-stretch justify-center p-8" style={{minHeight: 320}}>
-      {/* Twitter Box */}
-      <div className={`flex flex-col items-center justify-center w-[40%] ${glassyCardClass}`} style={{...boxShadowStyle, minHeight: 260}}>
-        <a
-          href="https://x.com/yourhandle"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-3 px-8 py-6 rounded-3xl border border-white/20 shadow-2xl bg-black/70 backdrop-blur-md hover:bg-white/10 hover:border-white/40 transition text-white text-2xl font-bold"
-          style={boxShadowStyle}
-        >
-          <XLogo />
-          <span>twitter</span>
-        </a>
+    <div className="max-w-2xl mx-auto">
+      <div className="text-center mb-8">
+        <h2 className="text-3xl font-bold text-white mb-4">General Inquiry</h2>
+        <p className="text-gray-400">Have a question? We'd love to hear from you.</p>
       </div>
-      {/* Mail Us Box */}
-      <div className={`flex flex-col items-center justify-center w-[60%] ${glassyCardClass} p-8`} style={{...boxShadowStyle, minHeight: 260}}>
-        <h2 className="text-white text-3xl font-extrabold mb-8 tracking-wide">Mail Us</h2>
-        <form onSubmit={handleSend} className="flex flex-col items-center w-full">
-          <div className="flex flex-row w-full gap-4 items-center mb-2">
+
+      <form onSubmit={handleSubmit} className="space-y-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
+              Full Name *
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+              className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-300"
+              placeholder="Your full name"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
+              Email Address *
+            </label>
             <input
               type="email"
-              className={glassyInputClass}
-              style={boxShadowStyle}
-              placeholder="Your email"
-              value={email}
-              onChange={handleEmailChange}
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
               required
+              className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-300"
+              placeholder="your@email.com"
             />
-            <button
-              type="submit"
-              className={`${glassyButtonClass} !text-white`}
-              style={boxShadowStyle}
-              disabled={!email.match(/^[^@\s]+@[^@\s]+\.[^@\s]+$/)}
-            >
-              Send
-            </button>
           </div>
-          {email && !sent && (
-            <span className="text-white/80 text-lg mt-4 mb-2 text-center w-full">Our team will connect with you in a while...</span>
-          )}
-          {sent && (
-            <span className="text-green-400 text-lg mt-4">Thank you! We'll be in touch soon.</span>
-          )}
-        </form>
-      </div>
+        </div>
+
+        <div>
+          <label htmlFor="company" className="block text-sm font-medium text-gray-300 mb-2">
+            Company
+          </label>
+          <input
+            type="text"
+            id="company"
+            name="company"
+            value={formData.company}
+            onChange={handleChange}
+            className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-300"
+            placeholder="Your company name"
+          />
+        </div>
+
+        <div>
+          <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
+            Message *
+          </label>
+          <textarea
+            id="message"
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            required
+            rows={6}
+            className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-300 resize-none"
+            placeholder="Tell us about your project or question..."
+          />
+        </div>
+
+        <button
+          type="submit"
+          className="w-full bg-gradient-to-r from-emerald-500 to-cyan-500 text-black font-bold py-4 px-8 rounded-xl hover:from-emerald-400 hover:to-cyan-400 transition-all duration-300 transform hover:scale-105 shadow-lg"
+        >
+          Send Message
+        </button>
+      </form>
     </div>
   );
 };
 
-export default GeneralInquiryForm; 
+export default GeneralInquiryForm;
