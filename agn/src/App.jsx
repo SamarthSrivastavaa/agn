@@ -8,6 +8,9 @@ function App() {
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
+    // Ensure page starts at the top
+    window.scrollTo(0, 0);
+    
     const handleScroll = () => {
       setShowScrollTop(window.scrollY > 300);
     };
