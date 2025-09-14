@@ -21,7 +21,7 @@ const Navbar = () => {
               onClick={() => scrollToSection('landing')}
               className="text-2xl font-bold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent hover:from-emerald-300 hover:to-cyan-300 transition-all duration-300"
             >
-              TECHNEON
+              BuildMyDream
             </button>
           </div>
 

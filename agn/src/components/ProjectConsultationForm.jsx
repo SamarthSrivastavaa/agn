@@ -91,14 +91,14 @@ const ProjectConsultationForm = () => {
               value={formData.projectType}
               onChange={handleChange}
               required
-              className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-300"
+              className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-300 [&>option]:bg-gray-800 [&>option]:text-white"
             >
-              <option value="">Select project type</option>
-              <option value="web-app">Web Application</option>
-              <option value="mobile-app">Mobile Application</option>
-              <option value="e-commerce">E-commerce Platform</option>
-              <option value="api">API Development</option>
-              <option value="other">Other</option>
+              <option value="" className="bg-gray-800 text-white">Select project type</option>
+              <option value="web-app" className="bg-gray-800 text-white">Web Application</option>
+              <option value="mobile-app" className="bg-gray-800 text-white">Mobile Application</option>
+              <option value="e-commerce" className="bg-gray-800 text-white">E-commerce Platform</option>
+              <option value="api" className="bg-gray-800 text-white">API Development</option>
+              <option value="other" className="bg-gray-800 text-white">Other</option>
             </select>
           </div>
 
@@ -111,14 +111,14 @@ const ProjectConsultationForm = () => {
               name="budget"
               value={formData.budget}
               onChange={handleChange}
-              className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-300"
+              className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-300 [&>option]:bg-gray-800 [&>option]:text-white"
             >
-              <option value="">Select budget range</option>
-              <option value="under-10k">Under $10,000</option>
-              <option value="10k-25k">$10,000 - $25,000</option>
-              <option value="25k-50k">$25,000 - $50,000</option>
-              <option value="50k-100k">$50,000 - $100,000</option>
-              <option value="over-100k">Over $100,000</option>
+              <option value="" className="bg-gray-800 text-white">Select budget range</option>
+              <option value="under-10k" className="bg-gray-800 text-white">Under $10,000</option>
+              <option value="10k-25k" className="bg-gray-800 text-white">$10,000 - $25,000</option>
+              <option value="25k-50k" className="bg-gray-800 text-white">$25,000 - $50,000</option>
+              <option value="50k-100k" className="bg-gray-800 text-white">$50,000 - $100,000</option>
+              <option value="over-100k" className="bg-gray-800 text-white">Over $100,000</option>
             </select>
           </div>
         </div>
@@ -132,14 +132,14 @@ const ProjectConsultationForm = () => {
             name="timeline"
             value={formData.timeline}
             onChange={handleChange}
-            className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-300"
+            className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-300 [&>option]:bg-gray-800 [&>option]:text-white"
           >
-            <option value="">Select timeline</option>
-            <option value="asap">ASAP</option>
-            <option value="1-month">1 Month</option>
-            <option value="2-3-months">2-3 Months</option>
-            <option value="3-6-months">3-6 Months</option>
-            <option value="6-months-plus">6+ Months</option>
+            <option value="" className="bg-gray-800 text-white">Select timeline</option>
+            <option value="asap" className="bg-gray-800 text-white">ASAP</option>
+            <option value="1-month" className="bg-gray-800 text-white">1 Month</option>
+            <option value="2-3-months" className="bg-gray-800 text-white">2-3 Months</option>
+            <option value="3-6-months" className="bg-gray-800 text-white">3-6 Months</option>
+            <option value="6-months-plus" className="bg-gray-800 text-white">6+ Months</option>
           </select>
         </div>
 

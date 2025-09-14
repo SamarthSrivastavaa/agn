@@ -12,28 +12,44 @@ const ReachOut = () => {
       id: 'general',
       title: 'General Inquiry',
       description: 'Have a question? We\'d love to hear from you.',
-      icon: '💬',
+      icon: (
+        <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+        </svg>
+      ),
       color: 'from-blue-500 to-purple-500'
     },
     {
       id: 'project',
       title: 'Project Consultation',
       description: 'Ready to start your next big project? Let\'s talk.',
-      icon: '🚀',
+      icon: (
+        <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
+      ),
       color: 'from-emerald-500 to-cyan-500'
     },
     {
       id: 'launch',
       title: 'Launch Support',
       description: 'Need help launching your product? We\'ve got you covered.',
-      icon: '🎯',
+      icon: (
+        <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+        </svg>
+      ),
       color: 'from-orange-500 to-red-500'
     },
     {
       id: 'join',
       title: 'Join Our Team',
       description: 'Want to work with us? We\'re always looking for talent.',
-      icon: '👥',
+      icon: (
+        <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+        </svg>
+      ),
       color: 'from-pink-500 to-rose-500'
     }
   ];
@@ -97,7 +113,9 @@ const ReachOut = () => {
             >
               <div className="text-center">
                 <div className={`w-16 h-16 bg-gradient-to-r ${card.color} rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg`}>
-                  <span className="text-2xl">{card.icon}</span>
+                  <div className="text-white">
+                    {card.icon}
+                  </div>
                 </div>
                 <h3 className="text-white font-bold text-lg mb-2">{card.title}</h3>
                 <p className="text-gray-400 text-sm leading-relaxed">{card.description}</p>
@@ -132,7 +150,7 @@ const ReachOut = () => {
               </svg>
             </div>
             <h3 className="text-white font-bold text-lg mb-2">Email Us</h3>
-            <p className="text-gray-400">hello@techneon.com</p>
+            <p className="text-gray-400">hello@buildmydream.com</p>
           </div>
 
           <div className="text-center p-6 bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10">
@@ -142,7 +160,9 @@ const ReachOut = () => {
               </svg>
             </div>
             <h3 className="text-white font-bold text-lg mb-2">Call Us</h3>
-            <p className="text-gray-400">+1 (555) 123-4567</p>
+            <p className="text-gray-400">+91 6392322708
+              +91 6388429375
+            </p>
           </div>
 
           <div className="text-center p-6 bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10">
@@ -153,7 +173,7 @@ const ReachOut = () => {
               </svg>
             </div>
             <h3 className="text-white font-bold text-lg mb-2">Visit Us</h3>
-            <p className="text-gray-400">123 Tech Street, Digital City</p>
+            <p className="text-gray-400">IIIT Sonepat, Sonepat</p>
           </div>
         </div>
       </div>

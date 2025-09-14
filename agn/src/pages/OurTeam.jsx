@@ -35,16 +35,16 @@ const OurTeam = () => {
         {/* Team Stats */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
           <div className="text-center p-8 bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10">
-            <div className="text-4xl font-bold text-emerald-400 mb-2">50+</div>
+            <div className="text-4xl font-bold text-emerald-400 mb-2">10+</div>
             <div className="text-gray-300">Projects Completed</div>
           </div>
           <div className="text-center p-8 bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10">
-            <div className="text-4xl font-bold text-emerald-400 mb-2">96%</div>
+            <div className="text-4xl font-bold text-emerald-400 mb-2">100%</div>
             <div className="text-gray-300">Client Satisfaction</div>
           </div>
           <div className="text-center p-8 bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10">
-            <div className="text-4xl font-bold text-emerald-400 mb-2">5+</div>
-            <div className="text-gray-300">Years Experience</div>
+            <div className="text-4xl font-bold text-emerald-400 mb-2">3+</div>
+            <div className="text-gray-300">Expert Team</div>
           </div>
         </div>
 

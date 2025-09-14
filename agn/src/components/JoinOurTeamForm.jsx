@@ -92,16 +92,16 @@ const JoinOurTeamForm = () => {
               value={formData.position}
               onChange={handleChange}
               required
-              className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-300"
+              className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-300 [&>option]:bg-gray-800 [&>option]:text-white"
             >
-              <option value="">Select position</option>
-              <option value="frontend">Frontend Developer</option>
-              <option value="backend">Backend Developer</option>
-              <option value="fullstack">Full-Stack Developer</option>
-              <option value="ui-ux">UI/UX Designer</option>
-              <option value="devops">DevOps Engineer</option>
-              <option value="project-manager">Project Manager</option>
-              <option value="other">Other</option>
+              <option value="" className="bg-gray-800 text-white">Select position</option>
+              <option value="frontend" className="bg-gray-800 text-white">Frontend Developer</option>
+              <option value="backend" className="bg-gray-800 text-white">Backend Developer</option>
+              <option value="fullstack" className="bg-gray-800 text-white">Full-Stack Developer</option>
+              <option value="ui-ux" className="bg-gray-800 text-white">UI/UX Designer</option>
+              <option value="devops" className="bg-gray-800 text-white">DevOps Engineer</option>
+              <option value="project-manager" className="bg-gray-800 text-white">Project Manager</option>
+              <option value="other" className="bg-gray-800 text-white">Other</option>
             </select>
           </div>
         </div>
@@ -116,14 +116,14 @@ const JoinOurTeamForm = () => {
             value={formData.experience}
             onChange={handleChange}
             required
-            className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-300"
+            className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-300 [&>option]:bg-gray-800 [&>option]:text-white"
           >
-            <option value="">Select experience level</option>
-            <option value="0-1">0-1 years</option>
-            <option value="1-3">1-3 years</option>
-            <option value="3-5">3-5 years</option>
-            <option value="5-10">5-10 years</option>
-            <option value="10+">10+ years</option>
+            <option value="" className="bg-gray-800 text-white">Select experience level</option>
+            <option value="0-1" className="bg-gray-800 text-white">0-1 years</option>
+            <option value="1-3" className="bg-gray-800 text-white">1-3 years</option>
+            <option value="3-5" className="bg-gray-800 text-white">3-5 years</option>
+            <option value="5-10" className="bg-gray-800 text-white">5-10 years</option>
+            <option value="10+" className="bg-gray-800 text-white">10+ years</option>
           </select>
         </div>
 

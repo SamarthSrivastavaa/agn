@@ -4,57 +4,45 @@ import InfoCard from './InfoCard';
 const DevCardList = () => {
   const developers = [
     {
-      name: 'Alex Johnson',
-      jobTitle: 'Senior Full-Stack Developer',
-      email: 'alex@techneon.com',
-      twitter: '@alexj_dev',
-      college: 'MIT Computer Science',
-      role: 'Lead Developer',
+      name: 'Samarth Srivastava',
+      jobTitle: 'Full-Stack & Blockchain Developer',
+      email: 'samarthsrivastava897@gmail.com',
+      twitter: '@samarth_dev',
+      college: 'IIIT Sonepat',
+      role: 'Developer',
       status: 'Available',
-      owner: 'TechNeon',
-      linkedin: 'alex-johnson-dev',
-      skills: ['React', 'Node.js', 'TypeScript', 'AWS', 'MongoDB']
+      owner: 'BuildMyDream',
+      linkedin: 'samarth-srivastava-dev',
+      skills: ['Blockchain', 'MERN Stack', 'NestJS', 'EVM', 'Solana']
     },
     {
-      name: 'Sarah Chen',
-      jobTitle: 'UI/UX Designer',
-      email: 'sarah@techneon.com',
-      twitter: '@sarah_designs',
-      college: 'Stanford Design',
-      role: 'Design Lead',
+      name: 'Sarthak Harsh',
+      jobTitle: 'Flutter & Blockchain Developer',
+      email: 'sarthakit12412004@iiitsonepat.ac.in',
+      twitter: '@Sarthak_WB3',
+      college: 'IIIT Sonepat',
+      role: 'App Dev & Blockchain',
       status: 'Available',
-      owner: 'TechNeon',
-      linkedin: 'sarah-chen-design',
-      skills: ['Figma', 'Adobe XD', 'Sketch', 'Prototyping', 'User Research']
+      owner: 'BuildMyDream',
+      linkedin: 'sarthak-harsh-dev',
+      skills: ['Flutter', 'Blockchain', 'Mobile Development', 'Dart', 'Web3']
     },
     {
-      name: 'Mike Rodriguez',
-      jobTitle: 'DevOps Engineer',
-      email: 'mike@techneon.com',
-      twitter: '@mike_devops',
-      college: 'Carnegie Mellon',
-      role: 'Infrastructure Lead',
-      status: 'Busy',
-      owner: 'TechNeon',
-      linkedin: 'mike-rodriguez-devops',
-      skills: ['Docker', 'Kubernetes', 'AWS', 'CI/CD', 'Monitoring']
-    },
-    {
-      name: 'Emily Watson',
-      jobTitle: 'Frontend Developer',
-      email: 'emily@techneon.com',
-      twitter: '@emily_frontend',
-      college: 'UC Berkeley',
-      role: 'Frontend Specialist',
+      name: 'Anurag Patel',
+      jobTitle: 'AI/ML Engineer',
+      email: 'anurag@buildmydream.com',
+      twitter: '@anurag_ai',
+      college: 'IIT Kanpur',
+      role: 'AI/ML Specialist',
       status: 'Available',
-      owner: 'TechNeon',
-      linkedin: 'emily-watson-frontend',
-      skills: ['React', 'Vue.js', 'JavaScript', 'CSS', 'Webpack']
+      owner: 'BuildMyDream',
+      linkedin: 'anurag-patel-ai',
+      skills: ['Machine Learning', 'Deep Learning', 'Python', 'TensorFlow', 'PyTorch', 'Computer Vision']
     }
   ];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {developers.map((dev, index) => (
         <InfoCard key={index} dev={dev} />
       ))}

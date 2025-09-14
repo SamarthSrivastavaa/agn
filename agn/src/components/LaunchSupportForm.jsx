@@ -122,14 +122,14 @@ const LaunchSupportForm = () => {
             value={formData.supportType}
             onChange={handleChange}
             required
-            className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-300"
+            className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-300 [&>option]:bg-gray-800 [&>option]:text-white"
           >
-            <option value="">Select support type</option>
-            <option value="technical">Technical Support</option>
-            <option value="marketing">Marketing & Promotion</option>
-            <option value="strategy">Launch Strategy</option>
-            <option value="monitoring">Performance Monitoring</option>
-            <option value="full-service">Full Launch Service</option>
+            <option value="" className="bg-gray-800 text-white">Select support type</option>
+            <option value="technical" className="bg-gray-800 text-white">Technical Support</option>
+            <option value="marketing" className="bg-gray-800 text-white">Marketing & Promotion</option>
+            <option value="strategy" className="bg-gray-800 text-white">Launch Strategy</option>
+            <option value="monitoring" className="bg-gray-800 text-white">Performance Monitoring</option>
+            <option value="full-service" className="bg-gray-800 text-white">Full Launch Service</option>
           </select>
         </div>
 
